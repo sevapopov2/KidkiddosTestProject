@@ -6,9 +6,12 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import Pages.BlogPage;
 import Pages.ContactUsPage;
+import Pages.FAQsPage;
 import Pages.MainPage;
 import Pages.RussianLanguagePage;
+import Pages.resourcesPage;
 import Pages.spanishLanguagePage;
 import Utilities.UseCaseBase;
 
@@ -50,8 +53,32 @@ public class mainPageTest extends UseCaseBase{
     }
 
     @Test
+    public void resourcesPageTest() {
+        logger.info("Openning resources page: ");
+        resourcesPage resourcesPage = mainPage.openResourcesPage();
+        boolean success = resourcesPage.isHeadingVisible();
+        assertTrue(success);
+    }
+
+    @Test
+    public void faqPageTest() {
+        logger.info("Testing the FAQs' page.");
+        FAQsPage faQsPage = mainPage.openFaQsPage();
+        boolean success = faQsPage.isHeadingVisible();
+        assertTrue(success);
+    }
+
+    @Test
+    public void blogPageTest() {
+        logger.info("Trying to open blogs page: ");
+        BlogPage blogPage = mainPage.openBlogPage();
+        boolean success = blogPage.isHeadingVisible();
+        assertTrue(success);
+    }
+
+    @Test
     public void openContactPageTest() {
-        logger.info("Checking the contatct us page test");
+        logger.info("Checking the contact us page test");
         ContactUsPage contactUsPage = mainPage.openContactUsPage();
         boolean isLoaded = contactUsPage.isHeadingVisible();
         assertTrue(isLoaded);

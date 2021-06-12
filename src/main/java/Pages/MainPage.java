@@ -8,6 +8,9 @@ public class MainPage extends BasePage{
     private static final String eBooks_by_language = "//a[@aria-controls='SiteNavLabel-ebooks-by-language']";
     private static final String russian_language = "//*[@aria-controls='SiteNavLabel-books-by-language']//following-sibling::*//a[text() = 'Russian - Русский']";
     private static final String spanish_language = "//*[@aria-controls='SiteNavLabel-ebooks-by-language']//following-sibling::*//a[text() = 'Spanish - Español']";
+    private static final String resources_link = "//a[@aria-controls='SiteNavLabel-resources']";
+    private static final String faqs_page = "//a[text() = 'FAQs']";
+    private static final String blog_page = "//*[text() = 'Blog']";
     private static final String contact_us_page = "//a[text() = 'Contact us']";
 
     public void navigateToMainPage() {
@@ -29,6 +32,22 @@ public class MainPage extends BasePage{
         clickElementByXpath(eBooks_by_language);
         clickElementByXpath(spanish_language);
         return new spanishLanguagePage();
+    }
+
+    public resourcesPage openResourcesPage() {
+        clickElementByXpath(resources_link);
+        clickElementByXpath(resources_link);
+        return new resourcesPage();
+    }
+
+    public FAQsPage openFaQsPage() {
+        clickElementByXpath(faqs_page);
+        return new FAQsPage();
+    }
+
+    public BlogPage openBlogPage() {
+        clickElementByXpath(blog_page);
+        return new BlogPage();
     }
 
     public ContactUsPage openContactUsPage() {

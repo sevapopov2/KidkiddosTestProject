@@ -12,6 +12,7 @@ import Pages.FAQsPage;
 import Pages.LoginPage;
 import Pages.MainPage;
 import Pages.RussianLanguagePage;
+import Pages.SignUpPage;
 import Pages.resourcesPage;
 import Pages.spanishLanguagePage;
 import Utilities.UseCaseBase;
@@ -92,4 +93,13 @@ public class mainPageTest extends UseCaseBase{
         boolean isLoaded = loginPage.isHeadingVisible();
         assertTrue(isLoaded);
     }
+
+    @Test
+    public void openSignUpPageTest() {
+        LoginPage loginPage = mainPage.openLoginPage();
+        SignUpPage signUpPage = loginPage.openSignUpPage();
+        boolean isLoaded = signUpPage.isHeadingVisible();
+        assertTrue(isLoaded);
+    }
+
 }

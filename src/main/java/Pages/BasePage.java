@@ -26,8 +26,7 @@ public class BasePage {
 
     protected WebElement findElementByXpath(String xpath) {
         WebElement element;
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));
-        element = webDriver.findElement(By.xpath(xpath));
+        element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));
         return element;
     }
 

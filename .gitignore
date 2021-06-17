@@ -6,6 +6,7 @@ target/
 #Files to ignore.
 *.class
 *.log
+*.txt
 .classpath
 .factorypath
 .project

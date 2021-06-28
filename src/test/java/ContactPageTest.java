@@ -15,7 +15,7 @@ import Utilities.UseCaseBase;
 public class ContactPageTest extends UseCaseBase{
     private static ContactUsPage contactUsPage;
     private static MainPage mainPage;
-    private static Logger logger = LogManager.getLogger(ContactPageTest.class);
+    private static final Logger logger = LogManager.getLogger(ContactPageTest.class);
 
     @BeforeAll
     public static void classSetup() {

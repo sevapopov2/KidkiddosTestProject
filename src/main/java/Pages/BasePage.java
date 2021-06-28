@@ -60,7 +60,6 @@ public class BasePage {
         try {
             FileUtils.copyFile(file, new File("Screenshots/" + name + ".jpg"));
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }

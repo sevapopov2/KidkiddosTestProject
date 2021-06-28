@@ -9,15 +9,17 @@ import org.apache.logging.log4j.Logger;
 import Pages.BlogPage;
 import Pages.ContactUsPage;
 import Pages.FAQsPage;
+import Pages.LoginPage;
 import Pages.MainPage;
 import Pages.RussianLanguagePage;
+import Pages.SignUpPage;
 import Pages.resourcesPage;
 import Pages.spanishLanguagePage;
 import Utilities.UseCaseBase;
 
 public class mainPageTest extends UseCaseBase{
     private static MainPage mainPage;
-    private static Logger logger = LogManager.getLogger(mainPageTest.class);
+    private static final Logger logger = LogManager.getLogger(mainPageTest.class);
 
     @BeforeAll
     public static void classSetup() {
@@ -83,4 +85,21 @@ public class mainPageTest extends UseCaseBase{
         boolean isLoaded = contactUsPage.isHeadingVisible();
         assertTrue(isLoaded);
     }
+
+    @Test
+    public void openLoginPageTest() {
+        logger.info("LogIn page open test: ");
+        LoginPage loginPage = mainPage.openLoginPage();
+        boolean isLoaded = loginPage.isHeadingVisible();
+        assertTrue(isLoaded);
+    }
+
+    @Test
+    public void openSignUpPageTest() {
+        LoginPage loginPage = mainPage.openLoginPage();
+        SignUpPage signUpPage = loginPage.openSignUpPage();
+        boolean isLoaded = signUpPage.isHeadingVisible();
+        assertTrue(isLoaded);
+    }
+
 }

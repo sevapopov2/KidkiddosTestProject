@@ -2,6 +2,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import Pages.MainPage;
 import Pages.TestingBookPage;
@@ -21,5 +22,10 @@ public class AddToCartTest extends UseCaseBase{
     @BeforeEach
     public void beforeTest() {
         mainPage.navigateToMainPage();
+    }
+
+    @Test
+    public void logsTest() {
+        mainPage.logsOutput();
     }
 }

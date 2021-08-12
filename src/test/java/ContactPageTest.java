@@ -1,3 +1,5 @@
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.BeforeAll;
@@ -5,8 +7,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 import Pages.ContactUsPage;
 import Pages.MainPage;
@@ -57,5 +57,10 @@ public class ContactPageTest extends UseCaseBase{
         logger.info("Using the parameterized testing for the eMail field: ");
         String eMail = contactUsPage.emailField(eMails);
         assertNotNull(eMail);
+    }
+
+    @Test
+    public void logsTest() {
+        mainPage.logsOutput();
     }
 }

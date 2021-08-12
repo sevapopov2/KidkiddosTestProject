@@ -94,4 +94,14 @@ public class BasePage {
         }
     }
 
+    public void captureElement(String xpath, String name) {
+        WebElement element = findElementByXpath(xpath);
+        File file = element.getScreenshotAs(OutputType.FILE);
+        try {
+            FileUtils.copyFile(file, new File("elementsScreenshots/" + name + ".jpg"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

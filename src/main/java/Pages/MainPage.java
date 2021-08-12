@@ -14,6 +14,7 @@ public class MainPage extends BasePage{
     private static final String blog_page = "//*[text() = 'Blog']";
     private static final String contact_us_page = "//a[text() = 'Contact us']";
     private static final String login_page = "//*[@class='icon icon-login']";
+    private static final String LOGO = "//*[alt='KidKiddos Books']";
 
     public void navigateToMainPage() {
         webDriver.get(Consts.MAIN_URL);
@@ -71,4 +72,9 @@ public class MainPage extends BasePage{
     public void logsOutput() {
         logsImplement();
     }
+
+    public void logoCapturing() {
+        captureElement(LOGO, "logo");
+    }
+
 }

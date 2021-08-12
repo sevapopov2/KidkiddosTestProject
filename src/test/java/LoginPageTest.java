@@ -1,9 +1,11 @@
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 import Pages.LoginPage;
 import Pages.MainPage;
@@ -44,5 +46,10 @@ public class LoginPageTest extends UseCaseBase{
         loginPage.emailField("sevapopov13@gmail.com");
         loginPage.passwordField("testP123456");
         loginPage.signInButton();
+    }
+
+    @Test
+    public void logsTest() {
+        mainPage.logsOutput();
     }
 }

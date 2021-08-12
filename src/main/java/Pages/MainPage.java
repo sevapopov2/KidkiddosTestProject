@@ -26,19 +26,20 @@ public class MainPage extends BasePage{
 
     public RussianLanguagePage russianLanguageClick() {
         clickElementByXpath(books_by_language);
-        clickElementByRelativeLocator(russian_language, books_by_language);
+        clickElementByRelativeLocator(russian_language, findElementByXpath(books_by_language));
         return new RussianLanguagePage();
     }
 
     public spanishLanguagePage spanishLanguageClick() {
         clickElementByXpath(eBooks_by_language);
-        clickElementByRelativeLocator(spanish_language, eBooks_by_language);
+        clickElementByRelativeLocator(spanish_language, findElementByXpath(eBooks_by_language));
         return new spanishLanguagePage();
     }
 
     public EnglishLanguagePage englishLanguageClick() {
         clickElementByXpath(books_by_language);
-        clickElementByXpath(ENGLISH_LANGUAGE);
+        clickElementByRelativeLocator(ENGLISH_LANGUAGE, findElementByXpath(books_by_language));
+        return new EnglishLanguagePage();
     }
 
     public resourcesPage openResourcesPage() {
@@ -67,4 +68,7 @@ public class MainPage extends BasePage{
         return new LoginPage();
     }
 
+    public void logsOutput() {
+        logsImplement();
+    }
 }

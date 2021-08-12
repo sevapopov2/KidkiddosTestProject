@@ -5,6 +5,7 @@ import static org.openqa.selenium.support.locators.RelativeLocator.with;
 import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
+import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
@@ -14,6 +15,9 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.logging.LogEntries;
+import org.openqa.selenium.logging.LogEntry;
+import org.openqa.selenium.logging.LogType;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -79,6 +83,15 @@ public class BasePage {
 
     protected void sendTextToElementByLocator(String xpath, WebElement locatorName, String text) {
         findElementByRelativeLocators(xpath, locatorName).sendKeys(text);
+    }
+
+    protected void logsImplement() {
+        LogEntries entries = webDriver.manage().logs().get(LogType.BROWSER);
+        List <LogEntry> logs = entries.getAll();
+        for (LogEntry e : logs) {
+            e.getMessage();
+            e.getLevel();
+        }
     }
 
 }

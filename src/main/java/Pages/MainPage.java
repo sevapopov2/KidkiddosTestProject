@@ -69,10 +69,6 @@ public class MainPage extends BasePage{
         return new LoginPage();
     }
 
-    public void logsOutput() {
-        logsImplement();
-    }
-
     public void logoCapturing() {
         captureElement(LOGO, "logo");
     }

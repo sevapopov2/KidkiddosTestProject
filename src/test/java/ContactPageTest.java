@@ -59,8 +59,4 @@ public class ContactPageTest extends UseCaseBase{
         assertNotNull(eMail);
     }
 
-    @Test
-    public void logsTest() {
-        mainPage.logsOutput();
-    }
 }

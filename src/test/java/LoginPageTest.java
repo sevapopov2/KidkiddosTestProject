@@ -5,7 +5,6 @@ import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Test;
 
 import Pages.LoginPage;
 import Pages.MainPage;
@@ -48,8 +47,4 @@ public class LoginPageTest extends UseCaseBase{
         loginPage.signInButton();
     }
 
-    @Test
-    public void logsTest() {
-        mainPage.logsOutput();
-    }
 }

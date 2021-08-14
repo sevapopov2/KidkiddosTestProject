@@ -102,8 +102,4 @@ public class mainPageTest extends UseCaseBase{
         assertTrue(isLoaded);
     }
 
-    @Test
-    public void logsTest() {
-        mainPage.logsOutput();
-    }
 }

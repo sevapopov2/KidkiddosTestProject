@@ -1,9 +1,10 @@
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 import Pages.LoginPage;
 import Pages.MainPage;
@@ -45,4 +46,5 @@ public class LoginPageTest extends UseCaseBase{
         loginPage.passwordField("testP123456");
         loginPage.signInButton();
     }
+
 }

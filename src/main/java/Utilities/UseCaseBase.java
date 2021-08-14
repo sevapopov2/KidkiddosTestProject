@@ -1,8 +1,16 @@
 package Utilities;
 
+import java.util.List;
+import java.util.logging.Level;
+
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.logging.LogEntries;
+import org.openqa.selenium.logging.LogEntry;
+import org.openqa.selenium.logging.LogType;
 
 import Pages.BasePage;
 
@@ -21,5 +29,16 @@ public class UseCaseBase {
     public static void tearDownMain() {
         SharedDriver.closeDriver();
         webDriver = null;
+    }
+
+    @Test
+    public void logsImplement() {
+        LogEntries entries = webDriver.manage().logs().get(LogType.BROWSER);
+        List <LogEntry> logs = entries.getAll();
+        for (LogEntry e : logs) {
+            e.getMessage();
+            e.getLevel();
+            Assertions.assertNotEquals(Level.SEVERE, e.getLevel());
+        }
     }
 }

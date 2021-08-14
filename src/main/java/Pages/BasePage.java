@@ -1,7 +1,10 @@
 package Pages;
 
+import static org.openqa.selenium.support.locators.RelativeLocator.with;
+
 import java.io.File;
 import java.io.IOException;
+import java.time.Duration;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
@@ -21,7 +24,7 @@ public class BasePage {
 
     public void setWebDriver(WebDriver webDriver) {
         this.webDriver = webDriver;
-        wait = new WebDriverWait(webDriver, 5);
+        wait = new WebDriverWait(webDriver, Duration.ofSeconds(5));
     }
 
     protected WebElement findElementByXpath(String xpath) {
@@ -42,7 +45,7 @@ public class BasePage {
     protected boolean elementExists(String xpath) {
         try {
             logger.info("Checking if xpath element exists: " + xpath);
-            webDriver.findElement(By.xpath(xpath));
+            findElementByXpath(xpath);
             return true;
         }
         catch (Exception err) {
@@ -63,4 +66,29 @@ public class BasePage {
             e.printStackTrace();
         }
     }
+
+    protected WebElement findElementByRelativeLocators(String xpath, WebElement locatorName) {
+        WebElement element;
+        element = wait.until(ExpectedConditions.presenceOfElementLocated(with(By.xpath(xpath)).near(locatorName)));
+        return element;
+    }
+
+    protected void clickElementByRelativeLocator(String xpath, WebElement locatorName) {
+        findElementByRelativeLocators(xpath, locatorName).click();
+    }
+
+    protected void sendTextToElementByLocator(String xpath, WebElement locatorName, String text) {
+        findElementByRelativeLocators(xpath, locatorName).sendKeys(text);
+    }
+
+    public void captureElement(String xpath, String name) {
+        WebElement element = findElementByXpath(xpath);
+        File file = element.getScreenshotAs(OutputType.FILE);
+        try {
+            FileUtils.copyFile(file, new File("elementsScreenshots/" + name + ".jpg"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

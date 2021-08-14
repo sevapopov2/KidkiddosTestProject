@@ -6,13 +6,15 @@ public class MainPage extends BasePage{
     private static final String skip_Link = "//a[text() = 'Skip to content']";
     private static final String books_by_language = "//a[@aria-controls='SiteNavLabel-books-by-language']";
     private static final String eBooks_by_language = "//a[@aria-controls='SiteNavLabel-ebooks-by-language']";
-    private static final String russian_language = "//*[@aria-controls='SiteNavLabel-books-by-language']//following-sibling::*//a[text() = 'Russian - Русский']";
-    private static final String spanish_language = "//*[@aria-controls='SiteNavLabel-ebooks-by-language']//following-sibling::*//a[text() = 'Spanish - Español']";
+    private static final String ENGLISH_LANGUAGE = "//a[text() = 'English Only']";
+    private static final String russian_language = "//a[text() = 'Russian - Русский']";
+    private static final String spanish_language = "//a[text() = 'Spanish - Español']";
     private static final String resources_link = "//a[@aria-controls='SiteNavLabel-resources']";
     private static final String faqs_page = "//a[text() = 'FAQs']";
     private static final String blog_page = "//*[text() = 'Blog']";
     private static final String contact_us_page = "//a[text() = 'Contact us']";
     private static final String login_page = "//*[@class='icon icon-login']";
+    private static final String LOGO = "//*[alt='KidKiddos Books']";
 
     public void navigateToMainPage() {
         webDriver.get(Consts.MAIN_URL);
@@ -25,14 +27,20 @@ public class MainPage extends BasePage{
 
     public RussianLanguagePage russianLanguageClick() {
         clickElementByXpath(books_by_language);
-        clickElementByXpath(russian_language);
+        clickElementByRelativeLocator(russian_language, findElementByXpath(books_by_language));
         return new RussianLanguagePage();
     }
 
     public spanishLanguagePage spanishLanguageClick() {
         clickElementByXpath(eBooks_by_language);
-        clickElementByXpath(spanish_language);
+        clickElementByRelativeLocator(spanish_language, findElementByXpath(eBooks_by_language));
         return new spanishLanguagePage();
+    }
+
+    public EnglishLanguagePage englishLanguageClick() {
+        clickElementByXpath(books_by_language);
+        clickElementByRelativeLocator(ENGLISH_LANGUAGE, findElementByXpath(books_by_language));
+        return new EnglishLanguagePage();
     }
 
     public resourcesPage openResourcesPage() {
@@ -59,6 +67,10 @@ public class MainPage extends BasePage{
     public LoginPage openLoginPage() {
         clickElementByXpath(login_page);
         return new LoginPage();
+    }
+
+    public void logoCapturing() {
+        captureElement(LOGO, "logo");
     }
 
 }

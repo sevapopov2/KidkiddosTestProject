@@ -8,13 +8,15 @@ import org.junit.jupiter.api.Test;
 
 import Pages.BlogPage;
 import Pages.ContactUsPage;
+import Pages.EnglishLanguagePage;
 import Pages.FAQsPage;
 import Pages.LoginPage;
 import Pages.MainPage;
+import Pages.ResourcesPage;
 import Pages.RussianLanguagePage;
 import Pages.SignUpPage;
-import Pages.resourcesPage;
-import Pages.spanishLanguagePage;
+import Pages.SpanishLanguagePage;
+import Pages.TestingBookPage;
 import Utilities.UseCaseBase;
 
 public class mainPageTest extends UseCaseBase{
@@ -39,25 +41,32 @@ public class mainPageTest extends UseCaseBase{
     }
 
     @Test
-    public void russianLanguageLoadTest() {
-        logger.info("Russian language link click test");
-        RussianLanguagePage russianLanguagePage = mainPage.russianLanguageClick();
-        boolean isHeadingVisible = russianLanguagePage.isHeadingVisible();
-        assertTrue(isHeadingVisible);
+    public void englishLanguageLoadTest() {
+        EnglishLanguagePage englishLanguagePage = mainPage.englishLanguageClick();
+        boolean success = englishLanguagePage.isHeadingVisible();
+        assertTrue(success);
     }
 
     @Test
-    public void spanishLanguageTest() {
+    public void russianLanguageLoadTest() {
+        logger.info("Russian language link click test");
+        RussianLanguagePage russianLanguagePage = mainPage.russianLanguageClick();
+        boolean success = russianLanguagePage.isHeadingVisible();
+        assertTrue(success);
+    }
+
+    @Test
+    public void spanishLanguageLoadTest() {
         logger.info("Spanish language page visibility test");
-        spanishLanguagePage spanishLanguagePage = mainPage.spanishLanguageClick();
-        boolean isHeadingVisible = spanishLanguagePage.isHeadingVisible();
-        assertTrue(isHeadingVisible);
+        SpanishLanguagePage spanishLanguagePage = mainPage.spanishLanguageClick();
+        boolean success = spanishLanguagePage.isHeadingVisible();
+        assertTrue(success);
     }
 
     @Test
     public void resourcesPageTest() {
         logger.info("Openning resources page: ");
-        resourcesPage resourcesPage = mainPage.openResourcesPage();
+        ResourcesPage resourcesPage = mainPage.openResourcesPage();
         boolean success = resourcesPage.isHeadingVisible();
         assertTrue(success);
     }
@@ -102,4 +111,11 @@ public class mainPageTest extends UseCaseBase{
         assertTrue(isLoaded);
     }
 
+    @Test
+    public void bookOpenTest() {
+        EnglishLanguagePage englishLanguagePage = mainPage.englishLanguageClick();
+        TestingBookPage testingBookPage = englishLanguagePage.openTestingBook();
+        boolean success = testingBookPage.isHeadingVisible();
+        assertTrue(success);
+    }
 }

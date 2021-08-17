@@ -27,6 +27,7 @@ public class SharedDriver {
             webDriver = new FirefoxDriver();
             break;
         }
+
         webDriver.manage().window().maximize();
         webDriver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
         return webDriver;

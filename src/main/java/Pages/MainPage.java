@@ -25,28 +25,30 @@ public class MainPage extends BasePage{
         return isVisible;
     }
 
-    public RussianLanguagePage russianLanguageClick() {
-        clickElementByXpath(books_by_language);
-        clickElementByRelativeLocator(russian_language, findElementByXpath(books_by_language));
-        return new RussianLanguagePage();
-    }
-
-    public spanishLanguagePage spanishLanguageClick() {
-        clickElementByXpath(eBooks_by_language);
-        clickElementByRelativeLocator(spanish_language, findElementByXpath(eBooks_by_language));
-        return new spanishLanguagePage();
-    }
-
     public EnglishLanguagePage englishLanguageClick() {
         clickElementByXpath(books_by_language);
-        clickElementByRelativeLocator(ENGLISH_LANGUAGE, findElementByXpath(books_by_language));
+        clickElementByRelativeLocator(ENGLISH_LANGUAGE, findElementByXpath(books_by_language), 200);
         return new EnglishLanguagePage();
     }
 
-    public resourcesPage openResourcesPage() {
+    public RussianLanguagePage russianLanguageClick() {
+        clickElementByXpath(books_by_language);
+        clickElementByRelativeLocator(russian_language, findElementByXpath(books_by_language), 200);
+        return new RussianLanguagePage();
+    }
+
+    public SpanishLanguagePage spanishLanguageClick() {
+        clickElementByXpath(eBooks_by_language);
+        clickElementByRelativeLocator(spanish_language, findElementByXpath(eBooks_by_language), 200);
+        return new SpanishLanguagePage();
+    }
+
+
+
+    public ResourcesPage openResourcesPage() {
         clickElementByXpath(resources_link);
         clickElementByXpath(resources_link);
-        return new resourcesPage();
+        return new ResourcesPage();
     }
 
     public FAQsPage openFaQsPage() {

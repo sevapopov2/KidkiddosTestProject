@@ -57,7 +57,7 @@ public class BasePage {
         return webDriver.getCurrentUrl();
     }
 
-    public void takeScreenshot(String name) {
+    protected void takeScreenshot(String name) {
         TakesScreenshot takesScreenshot = (TakesScreenshot) webDriver;
         File file = takesScreenshot.getScreenshotAs(OutputType.FILE);
         try {
@@ -67,21 +67,21 @@ public class BasePage {
         }
     }
 
-    protected WebElement findElementByRelativeLocators(String xpath, WebElement locatorName) {
+    protected WebElement findElementByRelativeLocators(String xpath, WebElement locatorName, int pixels) {
         WebElement element;
-        element = wait.until(ExpectedConditions.presenceOfElementLocated(with(By.xpath(xpath)).near(locatorName)));
+        element = wait.until(ExpectedConditions.presenceOfElementLocated(with(By.xpath(xpath)).near(locatorName, pixels)));
         return element;
     }
 
-    protected void clickElementByRelativeLocator(String xpath, WebElement locatorName) {
-        findElementByRelativeLocators(xpath, locatorName).click();
+    protected void clickElementByRelativeLocator(String xpath, WebElement locatorName, int pixels) {
+        findElementByRelativeLocators(xpath, locatorName, pixels);
     }
 
-    protected void sendTextToElementByLocator(String xpath, WebElement locatorName, String text) {
-        findElementByRelativeLocators(xpath, locatorName).sendKeys(text);
+    protected void sendTextToElementByLocator(String xpath, WebElement locatorName, int pixels, String text) {
+        findElementByRelativeLocators(xpath, locatorName, pixels).sendKeys(text);
     }
 
-    public void captureElement(String xpath, String name) {
+    protected void captureElement(String xpath, String name) {
         WebElement element = findElementByXpath(xpath);
         File file = element.getScreenshotAs(OutputType.FILE);
         try {

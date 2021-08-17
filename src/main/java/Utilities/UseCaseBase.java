@@ -36,8 +36,8 @@ public class UseCaseBase {
         LogEntries entries = webDriver.manage().logs().get(LogType.BROWSER);
         List <LogEntry> logs = entries.getAll();
         for (LogEntry e : logs) {
-            e.getMessage();
-            e.getLevel();
+            System.out.println(e.getMessage());
+            System.out.println(e.getLevel());
             Assertions.assertNotEquals(Level.SEVERE, e.getLevel());
         }
     }
